@@ -53,9 +53,22 @@ $250,000 * 50 True Negative - $1,000,000 * 1 False Positive = $11,500,000.00
 ```
 Two other metrics that get tossed around are **precision** and **recall.**  There's a [good article](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c) on precision and recall that does a better job of defining both than I can, but I'll copy some text and paraphrase a bit here.
 > **Precision** expresses the proportion of the data points our model says was relevant actually were relevant.
+or in a formula:  
+```
+                        true positives                        Credit Defaults Correctly Identified
+Precision     =       ------------------            =        ---------------------------------------
+                  true positives + false positives      Correctly Identified + Incorrectly Labeled as Default
+```
 
-> **Recall** expresses the ability to find all relevant instances in a dataset.
+> **Recall** expresses the ability to find all relevant instances in a dataset  
+```
+                        true positives                           Credit Defaults Correctly Identified
+Recall         =      -----------------------        =         ---------------------------------------
+                  true positives + false negatives         Correctly Identified + Incorrectly as No Default
+```
+The intuitive metric to use in our case would be to maximize recall.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, no default.  In the image below, we outline from the training data, the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
 
+![Target Distribution](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/TargetDistribution.png)  
 
 
 ## Data Mining For Business Analytics Course Description
