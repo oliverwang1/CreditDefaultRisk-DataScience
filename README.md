@@ -37,7 +37,7 @@ Accuracy is a great metric, but it does not tell the whole story.  Imagine a mod
 
 In this case the accuracy would be 97%, which would typically be great!  If you look closer at the data, however, the "model" is simply classifying every single patient as not having cancer.  Because cancer is relatively rare, the affect a False Negative has on accuracy metric is minimal.  In reality, however, the actual cost of a False Negative is a lost life, which is obviously a far higher cost than a false positive.  Even with an accuracy of 97%, this model is obviously garbage.
 
-As such, typically when deciding on a by which to judge a model, the data scientist should use an expected value framework to decide which of the above should be minimized.  
+As such, typically when deciding on a metric by which to judge a model, the data scientist should use an expected value framework to decide which of the above should be minimized.  
 
 Even though insurance companies actually do this, you cannot put a price on loss of life, so expected value is difficult in the cancer case.  In credit default, however, you can put a price on someone who does not pay their mortgage.  Let's assume the average value of a mortgage is $1,000,000.00.  That's a million bucks.   
 ![Austin Powers](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/one-million-dollars.jpg)  
