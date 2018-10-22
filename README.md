@@ -14,9 +14,10 @@ We found an excellent [Kaggle Kernel](https://www.kaggle.com/willkoehrsen/start-
 ...
 
 ## Metrics 
-...
-...
-...
+The metric by which the Kaggle competition was judged was the Receiver Operator Characteristic Area Under the Curve (ROC AUC).  Before diving into exactly what this measure means, let's back up and take a look at the purpose of the competition and the importance and cost of different types of error.
+
+The first thing to understand in order to grasp all of the various metrics is the confusion matrix, shown below.  
+
 
 
 ## Data Mining For Business Analytics Course Description
