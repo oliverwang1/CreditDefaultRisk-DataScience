@@ -51,6 +51,10 @@ The above matrix has the exact same accuracy as the previous credit default conf
 ```
 $250,000 * 50 True Negative - $1,000,000 * 1 False Positive = $11,500,000.00
 ```
+Two other metrics that get tossed around are **precision** and **recall.**  There's a [good article](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c) on precision and recall that does a better job of defining both than I can, but I'll copy some text and paraphrase a bit here.
+> **Precision** expresses the proportion of the data points our model says was relevant actually were relevant.
+
+> **Recall** expresses the ability to find all relevant instances in a dataset.
 
 
 
