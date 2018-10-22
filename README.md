@@ -39,7 +39,12 @@ In this case the accuracy would be 97%, which would typically be great!  If you 
 
 As such, typically when deciding on a by which to judge a model, the data scientist should use an expected value framework to decide which of the above should be minimized.  
 
-Even though insurance companies actually do this, you cannot put a price on loss of life, so expected value is difficult in the cancer case.  In credit default, however, you can put a price on someone who does not pay their mortgage.  Let's assume the average value of a mortgage is $1,000,000.00.  That's a million bucks.  For simplicity, let's also assume that homeowners either default on their first payment or don't default at all, and let's assume all 0% interest loans.  In this case, if a homeowner defaults, the bank loses a million bucks.  
+Even though insurance companies actually do this, you cannot put a price on loss of life, so expected value is difficult in the cancer case.  In credit default, however, you can put a price on someone who does not pay their mortgage.  Let's assume the average value of a mortgage is $1,000,000.00.  That's a million bucks.   
+![Austin Powers](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/one-million-dollars.jpg)  
+For simplicity, let's also assume that homeowners either default on their first payment or don't default at all, and let's assume all 0% interest loans.  In this case, if a homeowner defaults, the bank loses a million bucks, and the bank should probably predict that all mortgages will fail and not loan anyone any money.  This would suck, and I can tell you from experience, it kind of did suck immediately following the financial crash of 2008 when banks overcompensated for doing the opposite during the previous boom.  The Confusion Matrix would look like the one below:  
+![All Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/all-default.png)  
+
+OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that *minimizes* False Negatives while simultaneously *maximizes* True Negatives.
 
 
 ## Data Mining For Business Analytics Course Description
