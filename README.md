@@ -43,7 +43,7 @@ Even though insurance companies actually do this, you cannot put a price on loss
 ![Austin Powers](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/one-million-dollars.jpg)  
 For simplicity, let's also assume that homeowners either default on their first payment or don't default at all, and let's assume all 0% interest loans.  If we used the same logic as above, one possible confusion matrix would look like the one below:  
 ![Credit Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/CreditDefaultAccuracy.png)  
-In this case, if a homeowner defaults, the bank loses a million bucks.  This is obviously horrible for the bank so you might flip you're definition of positive and negative and the bank should probably predict that all mortgages will fail and not loan anyone any money.  This would be horrible for everyone else, and I can tell you from experience, it kind of did suck immediately following the financial crash of 2008 when banks overcompensated for doing the opposite during the previous boom.  The Confusion Matrix would look like the one below:  
+In this case, if a homeowner defaults, the bank loses a million bucks.  This is obviously horrible for the bank so accuracy is a bad metric.  Using similar logic, however, the bank would probably predict that all mortgages will fail and not loan anyone any money.  This would be horrible for everyone else, and I can tell you from experience, it kind of did suck immediately following the financial crash of 2008 when banks overcompensated for doing the opposite during the previous boom.  The Confusion Matrix would look like the one below:  
 ![All Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/all-default.png)  
 OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that *minimizes* False Negatives while simultaneously *maximizes* True Negatives.  If you look at it in terms of opportunity cost, you may also want to *minimize* False Positives as well just thinking about what could have been.
 
@@ -68,13 +68,22 @@ Precision     =       ------------------            =        -------------------
 Recall         =      -----------------------        =         ---------------------------------------
                   true positives + false negatives         Correctly Identified + Incorrectly as No Default
 ```
-The intuitive metric to use in our case would be to maximize recall.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, no default.  In the image below, we outline from the training data, the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
+The intuitive metric to use in our case would be to maximize recall.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, in our case no default.  In the image below, we outline from the training data the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
 
 ![Target Distribution](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/TargetDistribution.png)  
 
 The only problem with this is if we predict that every single person in the population will default, then our recall becomes 1.0!  This is the same problem we had with accuracy, and creates the same profit maximization issue as before.
 
-Precision is even less useful.  If we changed the model slightly and correctly identified even a single credit default, the precision would be 1.0, but the default would be very low.
+Precision is even less useful.  If we changed the model slightly and correctly identified even a single credit default, the precision would be 1.0, but the recall would be very low.  There's a problem that increasing precision decreases recall and vice-versa.  In our model, as in most situations, we want to find the optimal blend of precision and recall.  
+
+One option to find this optimal blend is the F1 score, which calculates the harmonic mean of precision and recall.
+```
+                         precision * recall
+  F1 Score       =  2 * ---------------------
+                         precision + recall
+```
+
+So the F1 score seems like a really good metric to use, but why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
 
 
 ## Data Mining For Business Analytics Course Description
