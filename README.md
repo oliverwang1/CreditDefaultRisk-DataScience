@@ -32,7 +32,7 @@ True Positive + True Negative                         True Positive + True Negat
 All Records                              (True Postive + True Negative + False Positive + False Negative)
 ```
 
-Accuracy is a great metric, but it does not tell the whole story.  Imagine a model is built and tested on 10,000 patients who reported cancer like symptoms to their doctor.  A lot of people use this same example on 100 or even 10 tested patients, but I use 10,000 to illustrate the magnitude of the probelm.  Now imagine the model classified patients according to the confusion matrix below:
+Accuracy is a great metric, but it does not tell the whole story.  Imagine a model is built and tested on 10,000 patients who reported cancer like symptoms to their doctor.  A lot of people use this same example on 100 or even 10 tested patients, but I use 10,000 to illustrate the magnitude of the probelm.  Now imagine the model classified patients according to the confusion matrix below:  
 ![Cancer Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/CancerConfusion.png)
 
 In this case the accuracy would be 97%, which would typically be great!  If you look closer at the data, however, the "model" is simply classifying every single patient as not having cancer.  Because cancer is relatively rare, the affect a False Negative has on accuracy metric is minimal.  In reality, however, the actual cost of a False Negative is a lost life, which is obviously a far higher cost than a false positive.  Even with an accuracy of 97%, this model is obviously garbage.
