@@ -68,13 +68,13 @@ Precision     =       ------------------            =        -------------------
 Recall         =      -----------------------        =         ---------------------------------------
                   true positives + false negatives         Correctly Identified + Incorrectly as No Default
 ```
-The intuitive metric to use in our case would be to maximize recall, also known as True Positive Rate.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, in our case no default.  In the image below, we outline from the training data the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
+The intuitive metric to use in our case would be to maximize recall, also known as True Positive Rate.  It's the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, in our case no default.  In the image below, we outline from the training data the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
 
 ![Target Distribution](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/TargetDistribution.png)  
 
 The only problem with this is if we predict that every single person in the population will default, then our recall becomes 1.0!  This is the same problem we had with accuracy, and creates the same profit maximization issue as before.
 
-Precision is even less useful.  If we changed the model slightly and correctly identified even a single credit default, the precision would be 1.0, but the recall would be very low.  There's a problem that increasing precision decreases recall and vice-versa.  In our model, as in most situations, we want to find the optimal blend of precision and recall.  
+Precision is even less useful.  If we changed the model slightly and correctly identified even a single credit default, the precision would be 1.0, but the recall would be very low.  There's a problem that increasing precision decreases recall and vice-versa.  In our model, as in a lot of situations, we want to find the optimal blend of precision and recall.  
 
 One option to find this optimal blend is the F1 score, which calculates the harmonic mean of precision and recall.
 ```
