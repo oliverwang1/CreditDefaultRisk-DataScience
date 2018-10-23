@@ -85,16 +85,16 @@ One option to find this optimal blend is the F1 score, which calculates the harm
 
 So the F1 score seems like a really good metric to use, but why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
 
-Oh, sorry, I digress.  We have this good metric, but what is the ROC AUC, also known as AUROC?  The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall, but balances it against the **False Positive Rate.**
+Oh, sorry, I digress.  We have this good metric, but what is the ROC AUC, also known as AUROC?  The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall (True Positive Rate), but balances it against the **False Positive Rate.**
 ```
                          FP
 False Positive Rate =  --------
                         TN+FP
 ```
-The ROC curve measures the True Postive Rate vs the False Positive Rate at different thresholds.  Threshold means the probability at which an observation is considered positive or negative.  
+The AUROC curve measures the True Postive Rate vs the False Positive Rate at different thresholds.  Threshold means the probability at which an observation is considered positive or negative.  So this obviously only works for probabalistic classifications.  
 ![Receiver Operating Characteristics](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/08/ROC-curve.png)  
 
-My man Will Koehrsen says it best:  
+My man Will Koehrsen says explains his own chart above best:  
 >A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.
 
 Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: `Recall = 1 - False Negative Rate` and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC gives us *exactly* what we need.  
