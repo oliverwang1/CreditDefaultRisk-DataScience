@@ -97,7 +97,7 @@ The AUROC curve measures the True Postive Rate vs the False Positive Rate at dif
 My man Will Koehrsen says explains his own chart above best:  
 >A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.
 
-Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: `Recall = 1 - False Negative Rate` and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC gives us *exactly* what we need.  
+Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: `Recall = 1 - False Negative Rate` and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC is a model that allows us to tune against *exactly* what we need and it also has the benefit of testing against a range of thresholds whereas the F1 score only reports results against a single threshold.   
 
 
 
