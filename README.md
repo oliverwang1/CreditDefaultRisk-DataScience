@@ -16,14 +16,14 @@ We found an excellent [Kaggle Kernel](https://www.kaggle.com/willkoehrsen/start-
 ## Metrics 
 The metric by which the Kaggle competition was judged was the Receiver Operator Characteristic Area Under the Curve (ROC AUC).  Before diving into exactly what this measure means, let's back up and take a look at the purpose of the competition and the importance and cost of different types of error.
 
-The first thing to understand in order to grasp all of the various metrics is the confusion matrix, shown below.  
+The first thing to understand in order to grasp all of the various metrics is the confusion matrix, shown below.  The confusion matrix represents the outcome of the experiment.  It is a sum of results by correctness, broken into four quadrants.
+
+* **True Positives (TP)** - In this case, true positives are rows of data where the model correctly predicts a credit default.
+* **True Negatives (TN)** - Again, in this competition, a true negative is when the model correctly predicts someone who does **not** default. 
+* **False Positives (FP)** - In this dataset, a False Positive is when someone who does not default is predicted to default.
+* **False Negatives (FN)** - In this dataset, a False Negative is when somoene who **does** default is predicted not to default.
 ![Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/ConfusionMatrix.png)
 
-Note the results can be broken into four quadrants:
-* **True Positives** - In this case, true positives are rows of data where the model correctly predicts a credit default.
-* **True Negatives** - Again, in this competition, a true negative is when the model correctly predicts someone who does **not** default. 
-* **False Positives** - In this dataset, a False Positive is when someone who does not default is predicted to default.
-* **False Negatives** - In this dataset, a False Negative is when somoene who **does** default is predicted not to default.
 
 A lot of times, an easy and effective metric that is used to judge a model is accuracy.  Accuracy is simply defined as the proportion of correctness in a classification system... also as a formula:  
 ```
