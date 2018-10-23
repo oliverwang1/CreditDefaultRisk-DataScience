@@ -45,7 +45,7 @@ For simplicity, let's also assume that homeowners either default on their first 
 ![Credit Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/CreditDefaultAccuracy.png)  
 In this case, if a homeowner defaults, the bank loses a million bucks.  This is obviously horrible for the bank.  The bank would rather predict that all mortgages will fail and not loan anyone any money.  This would be horrible for everyone else, and I can tell you from experience, it kind of did suck immediately following the financial crash of 2008 when banks overcompensated for doing the opposite during the previous boom.  The Confusion Matrix would look like the one below:  
 ![All Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/all-default.png)  
-OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that ***minimizes False Negatives*** while simultaneously ***maximizes True Negatives**.  If you look at it in terms of opportunity cost, you may also want to *minimize* False Positives as well just thinking about what could have been.
+OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that ***minimizes False Negatives*** while simultaneously ***maximizes True Negatives***.  If you look at it in terms of opportunity cost, you may also want to *minimize* False Positives as well just thinking about what could have been.
 
 Anyway, let's pretend a model now comes up with the following:  
 ![Expected Value Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/ExpectedValueMatrix.png)  
@@ -96,6 +96,8 @@ The ROC curve measures the True Postive Rate vs the False Positive Rate at diffe
 
 My man Will Koehrsen says it best:  
 >A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.
+
+Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: `Recall = 1 - False Negative Rate` and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC gives us *exactly* what we need.  
 
 
 
