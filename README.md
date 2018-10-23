@@ -25,7 +25,7 @@ The first thing to understand in order to grasp all of the various metrics is th
 ![Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/ConfusionMatrix.png)
 
 
-A lot of times, an easy and effective metric that is used to judge a model is accuracy.  Accuracy is simply defined as the proportion of correctness in a classification system... also as a formula:  
+Once we have the confusion matrix as a starting point, the outcome of an experiment can be judged.  A lot of times, an easy and effective metric that is used to judge a model based on data from the matrix is accuracy.  Accuracy is simply defined as the proportion of correctness in a classification system... also as a formula:  
 ```
 True Positive + True Negative                         True Positive + True Negative
 -------------------------------    =     --------------------------------------------------------------    
