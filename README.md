@@ -68,7 +68,7 @@ Precision     =       ------------------            =        -------------------
 Recall         =      -----------------------        =         ---------------------------------------
                   true positives + false negatives         Correctly Identified + Incorrectly as No Default
 ```
-The intuitive metric to use in our case would be to maximize recall.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, in our case no default.  In the image below, we outline from the training data the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
+The intuitive metric to use in our case would be to maximize recall, also known as True Positive Rate.  It's like the proportion of default cases that we found out of all the default cases that actually existed.  This is especially a good metric when looking at ***imbalanced classification problems,*** which are problems where the overwhelming majority of data points are one classification, in our case no default.  In the image below, we outline from the training data the distribution of defaults (1) vs non-defaults (0) clearly heavily favors those who do not default on their mortgage.  There's roughly an 8% default rate (24,825 defaults / 307,511 total records)
 
 ![Target Distribution](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/TargetDistribution.png)  
 
