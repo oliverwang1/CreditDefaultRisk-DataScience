@@ -45,7 +45,7 @@ For simplicity, let's also assume that homeowners either default on their first 
 ![Credit Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/CreditDefaultAccuracy.png)  
 In this case, if a homeowner defaults, the bank loses a million bucks.  This is obviously horrible for the bank.  The bank would rather predict that all mortgages will fail and not loan anyone any money.  This would be horrible for everyone else, and I can tell you from experience, it kind of did suck immediately following the financial crash of 2008 when banks overcompensated for doing the opposite during the previous boom.  The Confusion Matrix would look like the one below:  
 ![All Default Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/all-default.png)  
-OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that *minimizes* False Negatives while simultaneously *maximizes* True Negatives.  If you look at it in terms of opportunity cost, you may also want to *minimize* False Positives as well just thinking about what could have been.
+OK fine, let's say the average mortgage is still $1,00,000.00, but the homeowner pays the bank a flat $250,000.00 fee for each mortgage.  So a **False Negative** still ***costs*** the bank $1,000,000.00, but a **True Negative** ***earns*** the bank $250,000.00.  This is pretty close to reality.  If the bank is like any business and exists for the purpose of profit maximization, the most important metric should be one that ***minimizes False Negatives*** while simultaneously ***maximizes True Negatives**.  If you look at it in terms of opportunity cost, you may also want to *minimize* False Positives as well just thinking about what could have been.
 
 Anyway, let's pretend a model now comes up with the following:  
 ![Expected Value Confusion Matrix](https://github.com/osuhomebase/CreditDefaultRisk-DataScience/blob/master/Assets%20For%20Presentation/Images/ExpectedValueMatrix.png)  
@@ -54,7 +54,7 @@ The above matrix has the exact same accuracy as the previous credit default conf
 $250,000 * 50 True Negative - $1,000,000 * 1 False Positive = $11,500,000.00
 ```
 Two other metrics that get tossed around are **precision** and **recall.**  There's a [good article](https://towardsdatascience.com/beyond-accuracy-precision-and-recall-3da06bea9f6c) on precision and recall that does a better job of defining both than I can, but I'll copy some text and paraphrase a bit here.
-> **Precision** expresses the proportion of the data points our model says was relevant actually were relevant.
+> **Precision,** expresses the proportion of the data points our model says was relevant actually were relevant.
 or in a formula:  
 ```
                         true positives                        Credit Defaults Correctly Identified
@@ -62,7 +62,7 @@ Precision     =       ------------------            =        -------------------
                   true positives + false positives      Correctly Identified + Incorrectly Labeled as Default
 ```
 
-> **Recall** expresses the ability to find all relevant instances in a dataset  
+> **Recall,** also known as **True Positive Rate,** or **Sensitivity** expresses the ability to find all relevant instances in a dataset  
 ```
                         true positives                           Credit Defaults Correctly Identified
 Recall         =      -----------------------        =         ---------------------------------------
@@ -84,6 +84,19 @@ One option to find this optimal blend is the F1 score, which calculates the harm
 ```
 
 So the F1 score seems like a really good metric to use, but why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
+
+Oh, sorry, I digress.  We have this good metric, but what is the ROC AUC, also known as AUROC?  The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall, but balances it against the **False Positive Rate.**
+```
+                         FP
+False Positive Rate =  --------
+                        TN+FP
+```
+The ROC curve measures the True Postive Rate vs the False Positive Rate at different thresholds.  Threshold means the probability at which an observation is considered positive or negative.  
+![Receiver Operating Characteristics](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/08/ROC-curve.png)  
+
+My man Will Koehrsen says it best:  
+>A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.
+
 
 
 ## Data Mining For Business Analytics Course Description
