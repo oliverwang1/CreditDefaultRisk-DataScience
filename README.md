@@ -9,9 +9,15 @@ We found an excellent [Kaggle Kernel](https://www.kaggle.com/willkoehrsen/start-
 **More information about the project, evaluation metrics, etc to come soon!**
 
 ## Overview
-...
-... 
-...
+
+Home Credit Group is a leading international multi-channel provider of consumer finance founded in the Czech Republic in 1997, with operations on 3 continents. As a company, they've completed more than 131 million loans for people worldwide and employ more than 120,000 full time employees. Home Credit Group is a world leader of financing, operating in over 365,000 global distribution points of sale.
+
+It strives to broaden financial inclusion for the unbanked population by providing a positive and safe borrowing experience. In order to make sure this underserved population has a positive loan experience, Home Credit makes use of a variety of alternative data--including telco and transactional information--to predict their clients' repayment abilities.
+
+While Home Credit is currently using various statistical and machine learning methods to make these predictions, they're challenging Kagglers to help them unlock the full potential of their data. Our project is all about the whole competition and using the models to predict the default risk by the datasets they provides.
+
+We seperate our project into four parts: 
+
 
 ## Metrics 
 The metric by which the Kaggle competition was judged was the Receiver Operator Characteristic Area Under the Curve (ROC AUC).  Before diving into exactly what this measure means, let's back up and take a look at the purpose of the competition and the importance and cost of different types of error.
