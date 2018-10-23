@@ -16,7 +16,9 @@ It strives to broaden financial inclusion for the unbanked population by providi
 
 While Home Credit is currently using various statistical and machine learning methods to make these predictions, they're challenging Kagglers to help them unlock the full potential of their data. Our project is all about the whole competition and using the models to predict the default risk by the datasets they provides.
 
-We seperate our project into four parts: 
+We seperate our project into four parts: Introduction, exploratory data analysis, feature engineering and implementation.
+
+In introduction, we are going through the structrure of project and metrices overview, then we are getting know more about the dataset: missing values, the distribution of important features, the correlation and mutual information between the features and target variable and figure out the outlies. after doing the exploratory data analysis, we are going to transform the data for the models: encoding the category features, generate polynomial feature and domain knowledge features. after feature engineering, we will use logistic regression, decision tree and random forests to build models for predicting.
 
 
 ## Metrics 
