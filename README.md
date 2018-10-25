@@ -91,7 +91,7 @@ One option to find this optimal blend is the F1 score, which calculates the harm
                          precision + recall
 ```
 
-So the F1 score seems like a really good metric to use, but why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
+So the F1 score seems like a really good metric to use, why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
 
 Oh, sorry, I digress.  We have this good metric, but what is the ROC AUC, also known as AUROC?  The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall (True Positive Rate), but balances it against the **False Positive Rate.**
 ```
