@@ -93,19 +93,22 @@ One option to find this optimal blend is the F1 score, which calculates the harm
 
 So the F1 score seems like a really good metric to use, why then did the competition use this other score called the ROC AUC?  If only the interwebs provided answers to questions like this, and not just [entitled d-bags huffing with non-answers to questions](https://stats.stackexchange.com/questions/210700/how-to-choose-between-roc-auc-and-f1-score) that innocent people ask on Stack Overflow.
 
-Oh, sorry, I digress.  We have this good metric, but what is the ROC AUC, also known as AUROC?  The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall (True Positive Rate), but balances it against the **False Positive Rate.**
+Oh, sorry, I digress.  The problem with F1 is it is a bit of a black box and hard to decipher without additional context.  F1 is based on a single confusion matrix given a specific threshold, but who is to say that threshold is the best?  As [Stuart Reynolds](https://www.quora.com/What-does-it-mean-to-have-high-AUC-but-low-F1-score) put it:
+> People who publish F1 scores (or accuracies, or precisions, or any measure derived from a confusion matrix) willfully without further context, are charlatans and deserve to be strapped to Elon Musk’s next rocket (preferably the part that comes back down and explodes).   
+
+Reynolds does a good job explaining F1 vs AUC. The ROC AUC stands for Reciever Operating Characteristics Area Under the Curve.  Once again, [someone explains it better than we can](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5), but we'll quote and paraphrase again. Similar to F1, the AUROC attempts to balance inversely proportional metrics.  AUROC still uses recall (True Positive Rate), but balances it against the **False Positive Rate.**
 ```
                          FP
 False Positive Rate =  --------
                         TN+FP
 ```
-The AUROC curve measures the True Postive Rate vs the False Positive Rate at different thresholds.  Threshold means the probability at which an observation is considered positive or negative.  So this obviously only works for probabalistic classifications.  
+Further, the AUROC measures the True Postive Rate vs the False Positive Rate ***at different thresholds.***  Threshold means the probability at which an observation is considered positive or negative.  So this obviously only works for probabalistic classifications.  
 ![Receiver Operating Characteristics](https://www.statisticshowto.datasciencecentral.com/wp-content/uploads/2016/08/ROC-curve.png)  
 
 My man Will Koehrsen says explains his own chart above best:  
 >A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.
-
-Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: `Recall = 1 - False Negative Rate` and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC is a model that allows us to tune against *exactly* what we need and it also has the benefit of testing against a range of thresholds whereas the F1 score only reports results against a single threshold.   
+***Need to edit the following section ***
+Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC is a model that allows us to tune against *exactly* what we need and it also has the benefit of testing against a range of thresholds whereas the F1 score only reports results against a single threshold.   
 
 
 
