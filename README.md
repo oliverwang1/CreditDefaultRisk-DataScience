@@ -108,8 +108,11 @@ Further, the AUROC measures the True Postive Rate vs the False Positive Rate ***
 My man Will Koehrsen says explains his own chart above best:  
 >A single line on the graph indicates the curve for a single model, and movement along a line indicates changing the threshold used for classifying a positive instance. The threshold starts at 0 in the upper right to and goes to 1 in the lower left. A curve that is to the left and above another curve indicates a better model. For example, the blue model is better than the red model, which is better than the black diagonal line which indicates a naive random guessing model.  
 
-***Need to edit the following section ***
-Now recall that we want a model that minimizes False Negatives while simultaneously maximizes True Negatives.  Lucky for us the following holds true: and `False Positive Rate (FPR) = 1-True Negative Rate (TNR)` So the inverse of what was said earlier is we want to ***maximize true positive*** and ***minimize false positive***  So while F1 is still a good metric, AUROC is a model that allows us to tune against *exactly* what we need and it also has the benefit of testing against a range of thresholds whereas the F1 score only reports results against a single threshold.   
+AUROC seems like a good metric for something like a Kaggle competition where the objective is to build a very generalized model that is the best at various thresholds, but in real life, it really means nothing out of context.  An actual bank would be required to estimate expected value to make sound business decisions so that is exactly what we will do.  
+
+## Expected Value as a Metric  
+
+
 
 
 
