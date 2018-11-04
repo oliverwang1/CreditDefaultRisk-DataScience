@@ -9,7 +9,7 @@ Created on Sun Nov  4 13:19:31 2018
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import numpy as np
 
 #read data
 train = pd.read_csv('application_train.csv')
@@ -18,6 +18,16 @@ train['TARGET'].astype(int).plot.hist()
 
 #fill in the missing values with median
 train = train.fillna(train.median())
+
+
+#clean and transform variables
+train['DAYS_BIRTH']=-train['DAYS_BIRTH']/365
+
+train['DAYS_EMPLOYED']=abs(np.where(train['DAYS_EMPLOYED']==365243,np.nan,train['DAYS_EMPLOYED']))#365243 is an outlier
+train['DAYS_EMPLOYED']=train['DAYS_EMPLOYED']/365
+train['DAYS_REGISTRATION']=-train['DAYS_REGISTRATION']/365
+train['DAYS_ID_PUBLISH']=-train['DAYS_ID_PUBLISH']/365
+train['DAYS_LAST_PHONE_CHANGE']=-train['DAYS_LAST_PHONE_CHANGE']/365
 
 
 #kde function (for numeric variable)
@@ -62,13 +72,38 @@ def hist(var_name, df):
    plt.style.use('fivethirtyeight')
 
    # Plot the distribution of ages in years
-   plt.hist(df[var_name], edgecolor = 'k')
+   plt.hist(df[var_name], edgecolor = 'k', bins=20)
    plt.title('%s Distribution' % var_name); plt.xlabel(var_name); plt.ylabel('Count');
 
     
 
+#plot for the categorical variables
+countplot_x('NAME_CONTRACT_TYPE',train)
+countplot_x('CODE_GENDER',train)
+countplot_x('FLAG_OWN_CAR', train)
+countplot_x('CNT_CHILDREN', train)
+countplot_x('NAME_TYPE_SUITE',train)
+countplot_y('NAME_INCOME_TYPE', train)
+countplot_y('NAME_EDUCATION_TYPE',train)
+countplot_x('NAME_FAMILY_STATUS',train)
+countplot_x('NAME_HOUSING_TYPE',train)
+countplot_y('OCCUPATION_TYPE',train)
+countplot_y('CNT_FAM_MEMBERS',train)
+countplot_x('WEEKDAY_APPR_PROCESS_START',train)
+countplot_y('ORGANIZATION_TYPE',train) #how to figure out a better layout
 
 
+
+#plot for the numeric variables
+hist('AMT_INCOME_TOTAL', train)#some problem need to be fixed
+hist('AMT_CREDIT', train)
+hist('AMT_ANNUITY',train)
+hist('AMT_GOODS_PRICE',train)
+hist('DAYS_BIRTH',train)
+hist('DAYS_EMPLOYED',train)#it needs to be remove abnormal values(done at line 26)
+hist('DAYS_REGISTRATION',train)
+hist('DAYS_ID_PUBLISH',train)
+hist('DAYS_LAST_PHONE_CHANGE',train)
 
 
 
