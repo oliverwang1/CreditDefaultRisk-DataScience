@@ -221,7 +221,7 @@ data['credit_OBS_60']=data['AMT_CREDIT_1']/(1+data['OBS_60_CNT_SOCIAL_CIRCLE_1']
 data['credit_changephone']=data['AMT_CREDIT_1']/(1+data['DAYS_LAST_PHONE_CHANGE'])
 
 
-
+data = pd.read_csv('train_v4.csv')
 
 
 
