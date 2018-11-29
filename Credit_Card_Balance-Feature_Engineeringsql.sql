@@ -17,4 +17,4 @@ group by SK_ID_CURR
 select count(*) as TOTAL_PAYMENTS, SK_ID_CURR FROM credit_card_balance 
 group by SK_ID_CURR
 
-select min(convert(decimal(9,2),Months_balance)), sk_id_curr from credit_card_balance group by SK_ID_CURR
+select min(convert(decimal(9,2),Months_balance)) as months_balance, sk_id_curr from credit_card_balance group by SK_ID_CURR
