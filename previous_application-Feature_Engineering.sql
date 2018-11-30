@@ -1,5 +1,4 @@
-update previous_application set amt_annuity = 0 where amt_annuity = ''
-update previous_application set amt_application = 0 where amt_application = ''
+
 
 
 update app 
@@ -8,7 +7,7 @@ average_prev_app = q.average_prev_app,
 avg_prev_annuity = q.avg_prev_annuity,
 days_since_last_decision = q.days_since_last_decision,
 reject_reason = q.reject_reason
-from application_train app inner join 
+from [train_v4_clean_polynomial_domain] app inner join 
 (select count(*) as total_prev_apps, 
 	avg(convert(decimal(9,2),amt_application)) as average_prev_app, 
 	avg(convert(decimal(9,2),amt_annuity)) as avg_prev_annuity, 
