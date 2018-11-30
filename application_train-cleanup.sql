@@ -9,3 +9,4 @@ update [train_v4_clean_polynomial_domain] set total_underpayments = 0 where tota
 update [train_v4_clean_polynomial_domain] set total_payments = 0 where total_payments IS NULL
 update [train_v4_clean_polynomial_domain] set months_balance = 0 where months_balance IS NULL
 update [train_v4_clean_polynomial_domain] set avg_payment_compared_to_minimum = 0 where avg_payment_compared_to_minimum IS NULL
+update [train_v4_clean_polynomial_domain] set total_prev_apps = 0 where total_prev_apps IS NULL
